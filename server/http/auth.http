@@ -1,0 +1,13 @@
+### login
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "khitroudaniil@gmail.com",
+  "password": "admin1234"
+}
+
+  
+
+### refresh token
+GET http://localhost:3001/api/auth/refresh-token/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YzllOGM3NzdmYzBkNDE2MjhjNDc5OCIsImVtYWlsIjoia2hpdHJvdWRhbmlpbEBnbWFpbC5jb20iLCJpYXQiOjE3NzQ4NDI0NjksImV4cCI6MTc3NTQ0NzI2OX0.U90OOEZSn7ddYuDIiLLRQhE-LFC05PsQiBwRSUTe5Ms

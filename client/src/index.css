@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --bg:           #0a0a0a;
+  --surface:      #111111;
+  --surface-2:    #161616;
+  --surface-3:    #1c1c1c;
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.13);
+
+  /* Text hierarchy */
+  --text-1: #f2f2f2;
+  --text-2: #999999;
+  --text-3: #666666;
+  --text-4: #444444;
+
+  /* Accent */
+  --gold:        #c9a84c;
+  --gold-light:  #d4b870;
+  --gold-dim:    rgba(201, 168, 76, 0.1);
+  --gold-dim-2:  rgba(201, 168, 76, 0.06);
+
+  /* Radius */
+  --r-xs:   0.375rem;
+  --r-sm:   0.5rem;
+  --r-md:   0.875rem;
+  --r-lg:   1.25rem;
+  --r-pill: 9999px;
+
+  /* Easing */
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+
+  /* Spacing scale (4px base) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* Shadows */
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.45);
+  --shadow-card-hover: 0 0 0 1px rgba(201,168,76,0.2), 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-btn: 0 1px 4px rgba(201,168,76,0.18);
+  --shadow-btn-hover: 0 4px 16px rgba(201,168,76,0.28);
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  color: var(--text-1);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.18;
+  color: var(--text-1);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h4 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+.btn {
+  padding: 0.75rem 1.625rem;
+  border: none;
+  border-radius: var(--r-pill);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    transform 0.18s var(--ease-spring),
+    box-shadow 0.2s var(--ease),
+    opacity 0.2s var(--ease);
+  letter-spacing: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn-primary {
+  background-color: var(--gold);
+  color: #0a0a0a;
+  font-weight: 600;
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  background-color: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  color: var(--gold);
+  background-color: var(--gold-dim-2);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-danger {
+  background-color: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: var(--r-pill);
+}
+
+.btn-danger:hover {
+  background-color: rgba(248, 113, 113, 0.07);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: var(--sp-8);
+  border: none;
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--sp-4);
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.card:where(.hoverable):hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Form elements ─────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: var(--sp-5);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font-weight: 500;
+  color: var(--text-3);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-input,
+.form-select,
+.form-textarea,
+.input {
+  width: 100%;
+  padding: 0.875rem 1.0625rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: 0.9375rem;
+  background-color: rgba(255, 255, 255, 0.025);
+  color: var(--text-1);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.form-input::placeholder,
+.form-select::placeholder,
+.form-textarea::placeholder,
+.input::placeholder {
+  color: var(--text-4);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus,
+.input:focus {
+  outline: none;
+  border-color: rgba(201, 168, 76, 0.45);
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.07);
+}
+
+.form-select option {
+  background-color: var(--surface);
+  color: var(--text-1);
+}
+
+.form-error {
+  color: #f87171;
+  font-size: 0.8rem;
+  margin-top: var(--sp-1);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+.navbar {
+  background: rgba(10, 10, 10, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-1);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: var(--text-3);
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--r-sm);
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.navbar-link:hover {
+  color: var(--text-1);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-link.active {
+  color: var(--gold);
+}
+
+/* ── Grid ──────────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2, .grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3, .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 900px) {
+  .grid-cols-3, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid-cols-2, .grid-cols-3, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .navbar-links { display: none; }
+}
+
+/* ── Spinner ───────────────────────────────────────────────────────────────── */
+.spinner {
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-top: 2px solid var(--gold);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 0.65s linear infinite;
+  margin: 2.5rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Utilities ─────────────────────────────────────────────────────────────── */
+.text-center   { text-align: center; }
+.text-gold     { color: var(--gold); }
+.text-green    { color: var(--gold); }
+.text-gray     { color: var(--text-3); }
+.text-red      { color: #f87171; }
+.mt-1 { margin-top: var(--sp-2); }
+.mt-2 { margin-top: var(--sp-4); }
+.mt-4 { margin-top: var(--sp-8); }
+.mb-1 { margin-bottom: var(--sp-2); }
+.mb-2 { margin-bottom: var(--sp-4); }
+.mb-4 { margin-bottom: var(--sp-8); }
+.p-4  { padding: var(--sp-8); }
+
+/* ── Section dividers ──────────────────────────────────────────────────────── */
+.section-divider {
+  width: 32px;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.65;
+  border-radius: 1px;
+  margin: 0.75rem auto 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATED BACKGROUND — ambient light system
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Five luminous orbs drift across the viewport on organic, multi-waypoint
+   paths. mix-blend-mode: screen makes overlapping orbs glow like real light
+   passing through frosted glass — the same technique used on Apple.com.
+
+   Performance: CSS animations that only change `transform` / `opacity` run
+   entirely on the GPU compositor. No JS, no layout, no paint per frame.
+   filter: blur() is computed once at paint time; the GPU moves the texture.
+
+   Architecture (bottom → top):
+     .bg-blob-*   luminous gradient orbs, screen-blended, organic drift
+     .bg-grid     subtle court-line grid with slow diagonal scroll
+     .bg-noise    SVG film grain for cinematic depth
+     .bg-shimmer  full-width aurora band along the top edge
+   ─────────────────────────────────────────────────────────────────────── */
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ── Luminous orbs ─────────────────────────────────────────────────────────
+ * mix-blend-mode: screen — on a near-black background this makes each orb
+ * appear as a glowing light source, and overlapping orbs create bright
+ * hotspots exactly like light through glass.
+ * No will-change needed: CSS-only transform animations are compositor-driven
+ * by the browser automatically.
+ */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+
+/* ── Orb 1: top-left, large warm gold ── */
+.bg-blob-1 {
+  width: 920px; height: 840px;
+  background: radial-gradient(ellipse at 48% 48%,
+    rgba(201, 168,  76, 0.78) 0%,
+    rgba(201, 168,  76, 0.42) 32%,
+    rgba(201, 168,  76, 0.14) 58%,
+    transparent 76%
+  );
+  filter: blur(92px);
+  top: -380px; left: -300px;
+  animation: orb-1 28s ease-in-out infinite;
+}
+
+/* ── Orb 2: top-right, deep amber ── */
+.bg-blob-2 {
+  width: 740px; height: 700px;
+  background: radial-gradient(ellipse at 52% 48%,
+    rgba(184, 122,  28, 0.68) 0%,
+    rgba(184, 122,  28, 0.32) 38%,
+    rgba(184, 122,  28, 0.08) 64%,
+    transparent 80%
+  );
+  filter: blur(84px);
+  top: -260px; right: -300px;
+  animation: orb-2 34s ease-in-out infinite;
+  animation-delay: -9s;
+}
+
+/* ── Orb 3: bottom-right, rich gold ── */
+.bg-blob-3 {
+  width: 840px; height: 780px;
+  background: radial-gradient(ellipse at 50% 52%,
+    rgba(201, 168,  76, 0.65) 0%,
+    rgba(201, 168,  76, 0.28) 40%,
+    rgba(201, 168,  76, 0.07) 66%,
+    transparent 82%
+  );
+  filter: blur(100px);
+  bottom: -340px; right: -260px;
+  animation: orb-3 38s ease-in-out infinite;
+  animation-delay: -16s;
+}
+
+/* ── Orb 4: bottom-left, copper amber ── */
+.bg-blob-4 {
+  width: 680px; height: 640px;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(158, 108,  20, 0.60) 0%,
+    rgba(158, 108,  20, 0.25) 40%,
+    transparent 70%
+  );
+  filter: blur(76px);
+  bottom: -270px; left: -220px;
+  animation: orb-4 32s ease-in-out infinite;
+  animation-delay: -22s;
+}
+
+/* ── Orb 5: centre, bright breathing bloom ── */
+.bg-blob-5 {
+  width: 580px; height: 580px;
+  background: radial-gradient(circle,
+    rgba(224, 192,  88, 0.44) 0%,
+    rgba(224, 192,  88, 0.18) 42%,
+    transparent 68%
+  );
+  filter: blur(68px);
+  top: 50%; left: 50%;
+  animation: orb-5 24s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+/* Multi-waypoint paths — gives each orb an organic, non-mechanical feel */
+@keyframes orb-1 {
+  0%   { transform: translate(  0px,    0px) scale(1.00); }
+  25%  { transform: translate(200px,  110px) scale(1.09); }
+  50%  { transform: translate(160px,  240px) scale(0.95); }
+  75%  { transform: translate( 70px,  160px) scale(1.06); }
+  100% { transform: translate(  0px,    0px) scale(1.00); }
+}
+@keyframes orb-2 {
+  0%   { transform: translate(   0px,    0px) scale(1.00); }
+  30%  { transform: translate(-170px,  130px) scale(1.07); }
+  58%  { transform: translate(-110px,  260px) scale(0.93); }
+  80%  { transform: translate( -50px,  150px) scale(1.04); }
+  100% { transform: translate(   0px,    0px) scale(1.00); }
+}
+@keyframes orb-3 {
+  0%   { transform: translate(  0px,    0px) scale(1.00); }
+  28%  { transform: translate(-200px, -130px) scale(1.08); }
+  55%  { transform: translate(-140px, -260px) scale(0.92); }
+  80%  { transform: translate( -65px, -150px) scale(1.05); }
+  100% { transform: translate(  0px,    0px) scale(1.00); }
+}
+@keyframes orb-4 {
+  0%   { transform: translate(  0px,    0px) scale(1.00); }
+  35%  { transform: translate(165px, -120px) scale(1.10); }
+  65%  { transform: translate(110px, -220px) scale(0.94); }
+  100% { transform: translate(  0px,    0px) scale(1.00); }
+}
+@keyframes orb-5 {
+  0%   { transform: translate(-50%, -50%) scale(0.88); opacity: 0.55; }
+  50%  { transform: translate(-50%, -50%) scale(1.22); opacity: 1.00; }
+  100% { transform: translate(-50%, -50%) scale(0.88); opacity: 0.55; }
+}
+
+/* ── Court-line grid ─────────────────────────────────────────────────────── */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image:         radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 78%);
+  animation: grid-drift 60s linear infinite;
+}
+
+@keyframes grid-drift {
+  to { background-position: 64px 64px, 64px 64px; }
+}
+
+/* ── Film-grain noise ─────────────────────────────────────────────────────── */
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Top-edge aurora band ─────────────────────────────────────────────────── */
+.bg-shimmer {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent             0%,
+    rgba(201,168, 76, 0.00) 8%,
+    rgba(201,168, 76, 0.55) 28%,
+    rgba(224,196,108, 1.00) 50%,
+    rgba(201,168, 76, 0.55) 72%,
+    rgba(201,168, 76, 0.00) 92%,
+    transparent             100%
+  );
+  transform-origin: center;
+  animation: aurora 6s ease-in-out infinite;
+}
+
+@keyframes aurora {
+  0%   { opacity: 0.12; transform: scaleX(0.35); }
+  50%  { opacity: 1.00; transform: scaleX(1.00); }
+  100% { opacity: 0.12; transform: scaleX(0.35); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════════════════════
+
+   useScrollReveal (hook) adds .reveal to every .card and [data-reveal]
+   element, then adds .is-visible when they enter the viewport.
+
+   Entrance: slides up 28 px + fades in over 0.65 s using an "ease-out expo"
+   curve — the same curve Apple uses for their scroll transitions.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  /* ease-out expo — fast start, silky settle */
+  transition:
+    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect prefers-reduced-motion — disable all motion if the user asks */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .bg-blob, .bg-grid, .bg-shimmer {
+    animation: none;
+  }
+}
