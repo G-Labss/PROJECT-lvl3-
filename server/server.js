@@ -47,6 +47,18 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.get("/seed", async (req, res) => {
+  try {
+    const seedData = require("./seedData.js");
+    await seedData();
+    res.json({ message: 'Data seeded successfully' });
+  } catch (error) {
+    console.error('Error seeding data:', error);
+    res.status(500).json({ message: 'Error seeding data', error: error.message });
+
+  }
+})
+
 // 404 handler
 app.use((req, res, next) => {
   const err = new Error(`Route not found - ${req.originalUrl}`);
