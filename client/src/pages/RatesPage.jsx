@@ -316,6 +316,65 @@ const RatesPage = () => {
         })}
       </div>
 
+      {/* Payment — Zelle */}
+      <div className="card" style={{
+        marginTop: '3rem',
+        padding: '2rem 2.5rem',
+        boxShadow: '0 0 0 1px rgba(201,168,76,0.18), 0 4px 24px rgba(0,0,0,0.4)',
+        display: 'flex',
+        gap: '2.5rem',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}>
+        <img
+          src="/media/zelle-qr.png"
+          alt="Zelle QR code"
+          style={{
+            width: '140px',
+            height: '140px',
+            borderRadius: '0.875rem',
+            border: '1px solid rgba(255,255,255,0.08)',
+            flexShrink: 0,
+            objectFit: 'cover',
+          }}
+        />
+        <div style={{ flex: 1, minWidth: '200px' }}>
+          <p style={{
+            color: GOLD,
+            fontSize: '0.6875rem',
+            fontWeight: 600,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            marginBottom: '0.5rem',
+            fontFamily: 'Inter, sans-serif',
+          }}>
+            Payment
+          </p>
+          <h3 style={{ color: '#f0f0f0', marginBottom: '0.625rem', fontFamily: "'Playfair Display', serif" }}>
+            Pay via Zelle
+          </h3>
+          <p style={{ color: '#666', fontSize: '0.9375rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+            Scan the QR code or send payment directly to:
+          </p>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            backgroundColor: 'rgba(201,168,76,0.07)',
+            border: '1px solid rgba(201,168,76,0.22)',
+            borderRadius: '0.625rem',
+            padding: '0.625rem 1.125rem',
+          }}>
+            <span style={{ color: GOLD, fontSize: '1.0625rem', fontWeight: 600, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+              (616) 500-6583
+            </span>
+          </div>
+          <p style={{ color: '#444', fontSize: '0.8125rem', marginTop: '0.75rem', fontFamily: 'Inter, sans-serif' }}>
+            Payment due after each session unless a package is prepaid.
+          </p>
+        </div>
+      </div>
+
       {/* All Packages Include */}
       <div className="card" style={{ marginTop: '3rem', boxShadow: '0 0 0 1px rgba(201,168,76,0.15), 0 4px 24px rgba(0,0,0,0.4)', padding: '2rem' }}>
         <h3 style={{

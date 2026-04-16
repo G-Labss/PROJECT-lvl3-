@@ -115,6 +115,7 @@ export const bookingAPI = {
   markPaid: (id) => api.patch(`/bookings/${id}/pay`).then(r => r.data),
   getRankings: () => api.get('/bookings/rankings').then(r => r.data),
   updateStudentNtrp: (studentEmail, ntrpRating) => api.patch('/bookings/student-ntrp', { studentEmail, ntrpRating }).then(r => r.data),
+  getUpcoming: (email) => api.get(`/bookings/upcoming/${encodeURIComponent(email)}`).then(r => r.data),
 };
 
 export const testimonialAPI = {

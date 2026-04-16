@@ -64,6 +64,25 @@ exports.updateStudentNtrp = async (req, res, next) => {
   }
 };
 
+// GET /api/bookings/upcoming/:email — next scheduled lesson for a student
+exports.getUpcomingLesson = async (req, res, next) => {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const booking = await Booking.findOne({
+      studentEmail: req.params.email.toLowerCase(),
+      scheduledDate: { $gte: today },
+    })
+      .populate('lesson', 'title level duration')
+      .sort({ scheduledDate: 1 });
+
+    res.status(200).json({ success: true, data: booking || null });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // GET /api/bookings/:id
 exports.getBookingById = async (req, res, next) => {
   try {

@@ -39,7 +39,6 @@ const HomePage = () => {
   const { state, fetchLessons } = useAppContext();
   const { lessons, loading, error, currentUser } = state;
 
-  if (loading) return <LoadingSpinner message="Loading lessons..." />;
   if (error) return <ErrorMessage message={error} onRetry={fetchLessons} />;
 
   return (
@@ -175,7 +174,17 @@ const HomePage = () => {
           />
 
           <div className="grid grid-3">
-            {lessons.slice(0, 3).map((lesson) => (
+            {loading ? [0, 1, 2].map((i) => (
+              <div key={i} className="card skeleton-card" style={{ height: '320px' }}>
+                <div className="skeleton-line" style={{ width: '40%', height: '22px', marginBottom: '1.25rem', borderRadius: '9999px' }} />
+                <div className="skeleton-line" style={{ width: '75%', height: '26px', marginBottom: '0.75rem' }} />
+                <div className="skeleton-line" style={{ width: '90%', height: '16px', marginBottom: '0.4rem' }} />
+                <div className="skeleton-line" style={{ width: '70%', height: '16px', marginBottom: '1.75rem' }} />
+                <div style={{ marginTop: 'auto' }}>
+                  <div className="skeleton-line" style={{ width: '100%', height: '44px', borderRadius: '0.5rem' }} />
+                </div>
+              </div>
+            )) : lessons.slice(0, 3).map((lesson) => (
               <div key={lesson._id} className="card" style={{
                 display: 'flex',
                 flexDirection: 'column',

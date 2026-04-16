@@ -180,7 +180,7 @@ const AboutPage = () => {
                             {philosophyPoints.map((point, index) => (
                                 <div key={index} style={{
                                     display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.25rem 1.5rem',
-                                    backgroundColor: '#111111', borderRadius: '0.5rem', borderLeft: `3px solid ${GOLD}`, border: '1px solid #1e1e1e', borderLeft: `3px solid ${GOLD}`,
+                                    backgroundColor: '#111111', borderRadius: '0.5rem', border: '1px solid #1e1e1e', borderLeft: `3px solid ${GOLD}`,
                                 }}>
                                     <CheckCircle size={20} color={GOLD} style={{ flexShrink: 0, marginTop: '0.1rem', opacity: 0.8 }} />
                                     <p style={{ color: '#888', lineHeight: 1.65, margin: 0, fontSize: '0.9375rem' }}>{point}</p>
